@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { getProducts } from "../../services/productsService";
+import { Spinner } from "../Spinner/Spinner";
 
 // busca en el archivo products.json los productos y los renderiza con ItemList
 // si hay una categoría en la URL, filtra los productos por esa categoría
@@ -25,7 +26,7 @@ export const ItemListContainer = () => {
       .finally(() => setLoading(false));
   }, [category]);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Spinner/>;
   if (errors) return <p>{errors}</p>;
 
   return (

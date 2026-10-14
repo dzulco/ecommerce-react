@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { getProductById } from "../../services/productsService";
+import { Spinner } from "../Spinner/Spinner";
 
 // Este componente tiene la logica para obtener por id
 // el detalle de un producto y renderizarlo con ItemDetail
@@ -27,7 +28,7 @@ export const ItemDetailContainer = () => {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <Spinner/>;
   if (error) return <p>{error}</p>;
   if (!itemDetail) return <p>Producto no encontrado</p>;
 

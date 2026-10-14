@@ -11,9 +11,9 @@ const firebaseConfig = {
   apiKey: "***",
   authDomain: "***",
   projectId: "***",
-  storageBucket: "****",
+  storageBucket: "***",
   messagingSenderId: "***",
-  appId: "***"
+  appId: "****"
 };
 
 const app = initializeApp(firebaseConfig); // Initialize Firebase
