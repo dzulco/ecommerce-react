@@ -6,7 +6,8 @@ import { ItemListContainer } from "./components/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import {CartView} from "./components/Cart/CartView.jsx";
 import React from "react";
-import { Admin } from "./components/Admin/Admin.jsx";
+import { ProductFormContainer } from "./components/adminComponents/ProductForm/ProductFormContainer.jsx";
+import { ProductSuccess } from "./components/adminComponents/ProductSuccess.jsx";
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
           <Route path="/cart" element={<CartView />} />
           <Route path="/product/:id" element={<ItemDetailContainer />} />
           <Route path="/category/:category" element={<ItemListContainer />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<ProductFormContainer />} />
+          <Route path="/admin/products/success/:id" element={<ProductSuccess />} />
           <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
         </Routes>
       </main>
