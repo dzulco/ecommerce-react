@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Dashboard.css";
 import { useAuth } from "../../../context/AuthContext";
 
@@ -34,6 +34,10 @@ export const Dashboard = () => {
 
           <Link to="/admin/products" className="action-card">
             🗑️ Eliminar
+          </Link>
+
+          <Link to="/admin/orders" className="action-card">
+            📦 Órdenes
           </Link>
         </div>
       </section>

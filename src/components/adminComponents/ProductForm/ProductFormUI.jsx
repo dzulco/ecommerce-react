@@ -36,6 +36,21 @@ export const ProductFormUI = ({
         </div>
 
         <div>
+          <label htmlFor="stock">Stock:</label>
+          <input
+            id="stock"
+            type="number"
+            name="stock"
+            value={product.stock}
+            onChange={onChange}
+            min="0"
+            step="1"
+            required
+          />
+          {errors.stock && <p className="error">{errors.stock}</p>}
+        </div>
+
+        <div>
           <label>Categoría:</label>
           <input
             type="text"

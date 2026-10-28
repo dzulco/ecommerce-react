@@ -1,6 +1,6 @@
 // este componente se encarga de mostrar la lista de productos en el carrito,
-// y recibe como props el array de productos y
-// la funcion para eliminar un producto del carrito
+// y busca en el contexto el cart
+// y renderiza por cada item un CartItem 
 
 import { useCart } from "../../context/CartContext.jsx";
 import { CartItem } from "./CartItem.jsx";
@@ -10,7 +10,7 @@ export const CartList = () => {
 
   return (
     <section className="cart-list">
-      <h2>Productos en el carrito</h2>
+      
 
       <div className="cart-items-list">
         {cart.map((product) => (

@@ -9,6 +9,15 @@ export const validateProduct = (product) => {
     errors.price = "El precio debe ser mayor que 0";
   }
 
+  const stock = Number(product.stock);
+  if (
+    product.stock === "" ||
+    !Number.isInteger(stock) ||
+    stock < 0
+  ) {
+    errors.stock = "El stock debe ser un número entero igual o mayor que 0";
+  }
+
   if (!product.description.trim()) {
     errors.description = "La descripción es obligatoria";
   }

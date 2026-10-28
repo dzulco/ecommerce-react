@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createOrder } from "../services/ordersService";
 
 /* -------------------------------------------------------------------------- */
 /*                              CREAMOS CONTEXTO                              */
@@ -41,13 +42,24 @@ export const CartProvider = ({ children }) => {
             return;
         }
         // Validamos que la cantidad sea mayor a 0
-        if (quantity <= 0) {
+        const quantityNumber = Number(quantity);
+        if (!Number.isInteger(quantityNumber) || quantityNumber <= 0) {
             alert("Error al agregar al carrito ❌ - Cantidad inválida");
             return;
         }
 
-        // Convertimos la cantidad a número para evitar problemas de tipo
-        const quantityNumber = Number(quantity);
+        const availableStock = Number(item.stock);
+        if (!Number.isInteger(availableStock) || availableStock < 0) {
+            alert("No se pudo verificar el stock de este producto.");
+            return;
+        }
+
+        const existingItem = cart.find((element) => element.id === item.id);
+        const currentQuantity = Number(existingItem?.quantity) || 0;
+        if (currentQuantity + quantityNumber > availableStock) {
+            alert(`Solo quedan ${Math.max(availableStock - currentQuantity, 0)} unidades disponibles.`);
+            return;
+        }
 
         // Bandera para saber si el item ya existía en el carrito
         let itemEncontrado = false;
@@ -97,10 +109,15 @@ export const CartProvider = ({ children }) => {
     };
 
     //Checkout
-    const checkout = () => {
-        alert("Su compra ha sido realizada con éxito 🎁");
-        clearCart();
-        navigate("/");
+    const checkout = async () => {
+        try {
+            const orderId = await createOrder(cart);
+            clearCart();
+            navigate(`/order/success/${orderId}`);
+        } catch (error) {
+            console.error("Error al crear la orden:", error);
+            alert(error.message || "No se pudo guardar la compra. Intenta nuevamente.");
+        }
     };
 
     // Evalua si el carrito esta vacio
@@ -132,5 +149,3 @@ export const CartProvider = ({ children }) => {
 
     return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
 };
-
-

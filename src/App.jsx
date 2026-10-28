@@ -11,7 +11,9 @@ import { AdminLayout } from "./layouts/AdminLayout.jsx";
 import { Login } from "./components/Login/Login.jsx";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute.jsx";
 import { Dashboard } from "./components/adminComponents/Dashboard/Dashboard.jsx";
-import { ProductAdminListContainer } from "./components/adminComponents/ProductAdminListContainer.jsx";
+import { ProductAdminContainer } from "./components/adminComponents/ProductAdmin/ProductAdminContainer.jsx";
+import { OrdersAdminContainer } from "./components/adminComponents/OrdersAdmin/OrdersAdminContainer.jsx";
+import { OrderSuccess } from "./components/OrderSuccess.jsx";
 
 
 function App() {
@@ -24,6 +26,7 @@ function App() {
             <Route path="/cart" element={<CartView />} />
             <Route path="/product/:id" element={<ItemDetailContainer />} />
             <Route path="/category/:category" element={<ItemListContainer />} />
+            <Route path="/order/success/:id" element={<OrderSuccess />} />
           </Route>
           {/* Login por fuera de AdminLayout para acceder si no estamos logueados */}
           <Route path="/admin/login" element={<Login />} />
@@ -39,7 +42,8 @@ function App() {
             <Route path="products/new" element={<ProductFormContainer />} />
             <Route path="products/success/:id" element={<ProductSuccess />} />
             <Route path="products/edit/:id" element={<ProductFormContainer />} />
-            <Route path="products" element={<ProductAdminListContainer />} />
+            <Route path="products" element={<ProductAdminContainer />} />
+            <Route path="orders" element={<OrdersAdminContainer />} />
             
           </Route>
           <Route path="*" element={<h1>404 - Página no encontrada</h1>} />

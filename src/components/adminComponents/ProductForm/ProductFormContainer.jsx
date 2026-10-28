@@ -13,6 +13,7 @@ import "./ProductFormContainer.css";
 const emptyProduct = {
   name: "",
   price: "",
+  stock: "",
   category: "",
   description: "",
   image: "",
@@ -44,6 +45,7 @@ export const ProductFormContainer = () => {
         setProduct({
           name: productData.name ?? "",
           price: productData.price ?? "",
+          stock: productData.stock ?? 0,
           category: productData.category ?? "",
           description: productData.description ?? "",
           image: productData.image ?? "",
@@ -83,6 +85,7 @@ export const ProductFormContainer = () => {
       const productData = {
         name: product.name.trim(),
         price: Number(product.price),
+        stock: Number(product.stock),
         category: product.category.trim(),
         description: product.description.trim(),
         image,

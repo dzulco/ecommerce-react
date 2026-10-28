@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { deleteProduct, getProducts } from "../../services/productsService";
+import { deleteProduct, getProducts } from "../../../services/productsService";
 import { ProductAdminList } from "./ProductAdminList";
 
-export const ProductAdminListContainer = () => {
+export const ProductAdminContainer = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
