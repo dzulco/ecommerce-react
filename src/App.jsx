@@ -11,6 +11,7 @@ import { AdminLayout } from "./layouts/AdminLayout.jsx";
 import { Login } from "./components/Login/Login.jsx";
 import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute.jsx";
 import { Dashboard } from "./components/adminComponents/Dashboard/Dashboard.jsx";
+import { ProductAdminListContainer } from "./components/adminComponents/ProductAdminListContainer.jsx";
 
 
 function App() {
@@ -37,11 +38,8 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="products/new" element={<ProductFormContainer />} />
             <Route path="products/success/:id" element={<ProductSuccess />} />
-
-            {/* Opcionales */}
-            {/*<Route path="dashboard" element={<DashboardFull />} />*/}
-            {/*<Route path="products" element={<ProductAdminListContainer />} />*/} 
-            {/*<Route path="products/edit/:id" element={<ProductFormContainerDual />*/}
+            <Route path="products/edit/:id" element={<ProductFormContainer />} />
+            <Route path="products" element={<ProductAdminListContainer />} />
             
           </Route>
           <Route path="*" element={<h1>404 - Página no encontrada</h1>} />

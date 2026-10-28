@@ -1,9 +1,16 @@
 /* Spinner.css */
 .spinner-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.75rem;
   min-height: 100px;
+}
+
+.spinner-label {
+  color: var(--text);
+  font-size: 0.95rem;
 }
 
 .spinner {

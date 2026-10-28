@@ -1,24 +1,35 @@
-import {Item} from "../Item/Item.jsx";
-import {useCart} from "../../context/CartContext.jsx";
+import { useCart } from "../../context/CartContext.jsx";
 
 export const CartItem = (item) => {
-    const { removeItem, getQuantity } = useCart();
+  const { removeItem, getQuantity } = useCart();
+  const quantityInCart = getQuantity(item);
 
-    const quantityInCart = getQuantity(item);
-    console.log("Cantidad en el carrito para el item:", quantityInCart);
+  return (
+    <article className="cart-item">
+      {item.image ? (
+        <img
+          className="cart-item-image"
+          src={item.image}
+          alt={`Imagen de ${item.name}`}
+        />
+      ) : (
+        <div className="cart-item-image cart-item-no-image">Sin imagen</div>
+      )}
 
-    const removeFromCart = () => {
-        removeItem(item.id);
-    };
+      <div className="cart-item-info">
+        <h3>{item.name}</h3>
+        <p>{item.description}</p>
+        <p className="cart-item-price">${item.price}</p>
+        <p>Cantidad: {quantityInCart}</p>
+      </div>
 
-    return (
-        <div className="detail-wrapper">
-            <Item {...item}>
-                <span className="quantity">Cantidad: {quantityInCart}</span>
-                <button className="btn bg-primary primary" onClick={removeFromCart}>
-                    Quitar del carrito 🗑️
-                </button>
-            </Item>
-        </div>
-    );
+      <button
+        className="btn bg-primary primary cart-item-remove"
+        type="button"
+        onClick={() => removeItem(item.id)}
+      >
+        Quitar del carrito 🗑️
+      </button>
+    </article>
+  );
 };

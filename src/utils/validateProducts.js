@@ -17,7 +17,9 @@ export const validateProduct = (product) => {
     errors.category = "La categoria es obligatoria";
   }
 
-  if (!product.file) {
+  // Sino tiene una imagen guardada verificar si selecciono una nueva (file)
+  //solo validacion al crear ( no al actualizar)
+  if (!product.file && !product.image) {
     errors.file = "Debes seleccionar una imagen";
   }
   return errors;

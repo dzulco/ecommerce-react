@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "./Login.css";
 import { useState } from "react";
+import { validateLogin } from "../../utils/validateLogin";
 
 export const Login = () => {
   const { login } = useAuth();
@@ -10,16 +11,27 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const [errors, setErrors]= useState({});
 
+  {/*************** HANDLE CHANGE ***************/}
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setErrors((prev) => ({ ...prev, [name]: "" }));// limpia campo si el usuario lo corrige
   };
 
+  {/*************** HANDLE SUBMIT ***************/}
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
+  const validationErrors = validateLogin(formData);
+  setErrors(validationErrors);
+
+  if (Object.keys(validationErrors).length > 0) {
+    return;
+  }
+    
+  try {
       await login(formData.email, formData.password);
       navigate("/admin", { replace: true });
     } catch (error) {
@@ -42,6 +54,7 @@ export const Login = () => {
           onChange={handleChange}
           required
         />
+        {errors.email && <p className="error">{errors.email}</p>}
       </div>
 
       <div className="form-group">
@@ -54,7 +67,9 @@ export const Login = () => {
           onChange={handleChange}
           required
         />
+        {errors.password && <p className="error">{errors.password}</p>}
       </div>
+      
 
       <button className="btn bg-primary" type="submit">
         Ingresar

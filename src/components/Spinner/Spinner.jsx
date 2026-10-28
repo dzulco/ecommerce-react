@@ -7,8 +7,9 @@ export const Spinner = ({ size = 'medium', fullPage = false }) => {
   const spinnerClass = `spinner spinner-${size}`;
 
   return (
-    <div className={containerClass}>
-      <div className={spinnerClass}></div>
-    </div>
-  );
+  <div className={containerClass} role="status" aria-live="polite">
+    <div className={spinnerClass} aria-hidden="true"></div>
+    <span className="spinner-label">Cargando...</span>
+  </div>
+ );
 };
