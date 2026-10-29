@@ -84,13 +84,10 @@ export const CartProvider = ({ children }) => {
 
     // Eliminar del carrito
     const removeItem = (id) => {
-        // filtra los elementos que no tengan el id pasado por parametro
-        const updatedCart = cart.filter((element) => element.id !== id);
-        setCart(updatedCart);
+        setCart((currentCart) =>
+            currentCart.filter((element) => element.id !== id)
+        );
         alert("Producto eliminado ✅");
-
-        //Forma funcional "prev"
-        //setCart((prev) => prev.filter((element) => element.id !== id));
     };
 
     // Vacia el carrito
@@ -131,6 +128,13 @@ export const CartProvider = ({ children }) => {
         return foundItem ? foundItem.quantity : 0;
     }
 
+    {/* stock del producto menos cantidad en el carrito actual */}
+    const getAvailableStock = (item) => {
+        const stock = Number(item.stock);
+        if (!Number.isInteger(stock) || stock < 0) return 0;
+        return Math.max(0, stock - getQuantity(item));
+    };
+
     function findItem(item) {
         return cart.find((element) => element.id === item.id);
     }
@@ -144,7 +148,8 @@ export const CartProvider = ({ children }) => {
         getTotalItems,
         checkout,
         isCartEmpty,
-        getQuantity
+        getQuantity,
+        getAvailableStock
     };
 
     return <CartContext.Provider value={values}>{children}</CartContext.Provider>;

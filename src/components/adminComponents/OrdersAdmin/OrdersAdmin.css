@@ -105,7 +105,21 @@
     flex-direction: column;
   }
 
+  .orders-admin__header h1,
+  .order-admin__header h2 {
+    overflow-wrap: anywhere;
+  }
+
+  .order-admin__status {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
   .order-admin__items li {
     font-size: 0.9rem;
+  }
+
+  .order-admin__items li span:last-child {
+    flex-shrink: 0;
   }
 }

@@ -30,6 +30,10 @@ export const validateProduct = (product) => {
   //solo validacion al crear ( no al actualizar)
   if (!product.file && !product.image) {
     errors.file = "Debes seleccionar una imagen";
+  } else if (product.file && product.file.size === 0) {
+    errors.file = "El archivo seleccionado está vacío. Elegí otra imagen.";
+  } else if (product.file && !product.file.type?.startsWith("image/")) {
+    errors.file = "El archivo seleccionado no es una imagen válida.";
   }
   return errors;
 };

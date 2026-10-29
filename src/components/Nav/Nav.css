@@ -97,3 +97,26 @@
   font-size: 0.75rem;
   font-weight: bold;
 }
+
+@media (max-width: 640px) {
+  .nav-list {
+    justify-content: center;
+    gap: clamp(1rem, 8vw, 2rem);
+  }
+
+  .nav-list a,
+  .dropdown-btn {
+    min-height: 2.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .dropdown-menu {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100vw - 2rem);
+  }
+
+  .dropdown-menu a {
+    min-height: 2.5rem;
+  }
+}

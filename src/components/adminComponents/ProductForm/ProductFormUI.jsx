@@ -72,11 +72,16 @@ export const ProductFormUI = ({
         </div>
 
         <div>
-          <label>Imagen:</label>
+          <label htmlFor="product-image">Imagen:</label>
           {product.image && (
             <img src={product.image} alt={`Imagen de ${product.name}`} />
           )}
-          <input type="file" accept="image/*" onChange={onFileChange} />
+          <input
+            id="product-image"
+            type="file"
+            accept="image/*"
+            onChange={onFileChange}
+          />
           {errors.file && <p className="error">{errors.file}</p>}
         </div>
 

@@ -69,3 +69,14 @@
   color: var(--danger);
   font-size: 0.9rem;
 }
+
+@media (max-width: 600px) {
+  .login-form {
+    margin: 1rem auto;
+    padding: 1.25rem;
+  }
+
+  .login-form h2 {
+    margin-bottom: 1.5rem;
+  }
+}

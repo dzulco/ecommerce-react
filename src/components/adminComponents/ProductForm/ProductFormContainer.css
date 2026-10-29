@@ -84,3 +84,24 @@
   color: var(--danger);
   font-size: 0.9rem;
 }
+
+@media (max-width: 600px) {
+  .product-form {
+    margin: 1rem auto;
+    padding: 1.25rem;
+  }
+
+  .product-form h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .product-form input[type="file"] {
+    padding: 0.65rem;
+    font-size: 0.9rem;
+  }
+
+  .product-form img {
+    width: min(220px, 100%);
+  }
+}

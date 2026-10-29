@@ -1,5 +1,7 @@
 .dashboard {
+  width: 100%;
   max-width: 950px;
+  min-width: 0;
   margin: 2rem auto;
   padding: 2rem;
 
@@ -24,7 +26,7 @@
 }
 
 .dashboard-header h2 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   color: var(--text);
 }
 
@@ -46,14 +48,17 @@
 }
 
 .actions-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
   gap: 1rem;
 }
 
 .action-card {
-  flex: 1;
-
   padding: 1.5rem;
+  min-height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   background: var(--card);
   border: 1px solid var(--border);
@@ -113,4 +118,58 @@
 .btn-secondary:hover {
   background: var(--card);
   border-color: var(--primary);
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    margin: 1rem auto;
+    padding: clamp(1rem, 4vw, 1.5rem);
+    overflow-wrap: anywhere;
+  }
+
+  .dashboard-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .dashboard-header h2 {
+    font-size: clamp(1.4rem, 6vw, 1.75rem);
+    overflow-wrap: anywhere;
+  }
+
+  .dashboard .header-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .dashboard .header-actions .btn {
+    width: 100%;
+    min-width: 0;
+    padding: 0.65rem 0.5rem;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .dashboard .actions-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .dashboard .action-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 4rem;
+    padding: 0.85rem 0.5rem;
+    font-size: clamp(0.9rem, 3.8vw, 1rem);
+    overflow-wrap: anywhere;
+  }
+
+  .dashboard-help {
+    padding: 1rem;
+  }
 }

@@ -68,3 +68,24 @@
   min-width: 200px;
   text-align: center;
 }
+
+@media (max-width: 600px) {
+  .success-page {
+    margin: 1rem auto;
+    padding: 1.5rem 1rem;
+  }
+
+  .success-page h2 {
+    font-size: 1.4rem;
+    overflow-wrap: anywhere;
+  }
+
+  .success-actions,
+  .success-actions .btn {
+    width: 100%;
+  }
+
+  .success-actions .btn {
+    min-width: 0;
+  }
+}

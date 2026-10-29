@@ -6,12 +6,9 @@ import { useState } from "react";
 // Componente que muestra el detalle de un item y permite agregarlo al carrito
 export const ItemDetail = ({ item }) => {
 
-  const { addItem, getQuantity } = useCart();
+  const { addItem, getAvailableStock } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const availableToAdd = Math.max(
-    0,
-    Number(item.stock || 0) - getQuantity(item)
-  );
+  const availableToAdd = getAvailableStock(item);
 
   const addToCart = () => {
     addItem(item, quantity);
@@ -34,6 +31,7 @@ export const ItemDetail = ({ item }) => {
   return (
     <div className="detail-wrapper">
       <Item {...item}>
+        <p className="item-stock">Disponibles: {availableToAdd}</p>
         <button
           className="btn bg-primary primary"
           onClick={addToCart}

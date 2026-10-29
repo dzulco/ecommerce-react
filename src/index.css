@@ -22,6 +22,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, sans-serif;
+  min-width: 320px;
 }
 
 #root {
@@ -110,4 +111,21 @@ a {
   color: var(--text-secondary);
   cursor: not-allowed;
   filter: none;
+}
+
+@media (max-width: 600px) {
+  main {
+    width: calc(100% - 2rem);
+    margin: 1.25rem auto;
+  }
+
+  h1 {
+    font-size: clamp(1.6rem, 7vw, 2rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .btn {
+    min-height: 2.75rem;
+    padding: 0.65rem 1rem;
+  }
 }
