@@ -1,0 +1,42 @@
+.detail-wrapper {
+  max-width: 20rem;
+  margin: auto;
+}
+
+.detail-wrapper .card {
+  align-items: center;
+}
+
+.detail-wrapper .counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0 1rem;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.detail-wrapper .counter:hover {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.detail-wrapper .counter .btn {
+  margin: 0;
+}
+
+.detail-wrapper .counter span {
+  min-width: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.detail-wrapper .card p:first-of-type {
+  display: block;
+  overflow: visible;
+  line-clamp: unset;
+  -webkit-box-orient: initial;
+}
